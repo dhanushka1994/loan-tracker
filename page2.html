@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIC Data</title>
+</head>
+<body>
+  <h1>NIC Data</h1>
+  <div id="dataContainer"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const nic = params.get("nic");
+
+    if (nic) {
+      fetch("https://script.google.com/macros/s/AKfycbypB5r0ipQ9w2ykz65HO1-TgsZyadJJD7APj-u37fdC9X_-lk-P3PhXleae4ksyRarLvQ/exec?nic=" + nic)
+        .then(response => response.json())
+        .then(data => {
+          const container = document.getElementById("dataContainer");
+          if (data.success) {
+            container.innerHTML = `
+              <p><strong>NIC:</strong> ${data.data.NIC}</p>
+              <p><strong>Name:</strong> ${data.data.Name}</p>
+              <p><strong>Status:</strong> ${data.data.Status}</p>
+              <p><strong>Remark:</strong> ${data.data.Remark}</p>
+            `;
+          } else {
+            container.innerHTML = `<p>${data.message}</p>`;
+          }
+        })
+        .catch(error => console.error("Error:", error));
+    } else {
+      document.getElementById("dataContainer").innerHTML = "<p>NIC is missing!</p>";
+    }
+  </script>
+</body>
+</html>
