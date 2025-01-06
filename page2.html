@@ -14,7 +14,7 @@
     const nic = params.get("nic");
 
     if (nic) {
-      fetch("https://script.google.com/macros/s/AKfycbypB5r0ipQ9w2ykz65HO1-TgsZyadJJD7APj-u37fdC9X_-lk-P3PhXleae4ksyRarLvQ/exec?nic=" + nic)
+      fetch("https://script.google.com/macros/s/AKfycbypqVfiyDHAQyeGdxjzaDkgr_EaLc2DiM3yFX17Wa8Wl99q8qJveaqMUrrb4Tu7zbfIIw/exec?nic=" + nic)
         .then(response => response.json())
         .then(data => {
           const container = document.getElementById("dataContainer");
