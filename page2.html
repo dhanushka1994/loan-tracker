@@ -13,10 +13,6 @@
     const params = new URLSearchParams(window.location.search);
     const nic = params.get("nic");
 
-    // Assuming NIC is already retrieved and stored in a variable
-const nic = "123456789"; // Replace with your dynamic NIC variable
-document.getElementById("tracking-link").setAttribute("href", `tracking.html?nic=${nic}`);
-
     if (nic) {
       fetch("https://script.google.com/macros/s/AKfycbylzqyYVL9zAcXEdIg1P_zaD73gxLV92vahpn2kI3YMdsM-Goz_IrXLbyQZVjV-KlgTTA/exec?nic=" + nic)
         .then(response => response.json())
@@ -29,8 +25,6 @@ document.getElementById("tracking-link").setAttribute("href", `tracking.html?nic
               <p><strong>Status:</strong> ${data.data.Status}</p>
               <p><strong>Remark:</strong> ${data.data.Remark}</p>
             `;
-            <a href="tracking.html?nic=" id="tracking-link">View Status Tracking</a>
-
           } else {
             container.innerHTML = `<p>${data.message}</p>`;
           }
